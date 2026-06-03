@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schwarzschild Radius Research | Ilyas</title>
+    <!-- Подключаем MathJax для идеального отображения LaTeX формул -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
@@ -25,15 +26,39 @@
             max-width: 900px;
             margin: 20px auto;
         }
+        .navigation-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
         .back-link {
             color: var(--accent-color);
             text-decoration: none;
             font-weight: bold;
-            display: inline-block;
-            margin-bottom: 20px;
         }
         .back-link:hover { text-decoration: underline; }
-        h1 { color: #fff; margin-bottom: 10px; }
+        
+        /* Стильная кнопка для открытия PDF на телефонах */
+        .download-btn {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        .download-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        h1 { color: #fff; margin-bottom: 10px; font-size: 1.8rem; }
         
         .formula-box {
             background-color: var(--card-bg);
@@ -45,6 +70,7 @@
             font-size: 1.2rem;
         }
 
+        /* Контейнер для PDF с поддержкой прокрутки на iOS */
         .pdf-container {
             position: relative;
             width: 100%;
@@ -52,6 +78,7 @@
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid #334155;
+            -webkit-overflow-scrolling: touch; /* Включает плавный скролл для iOS */
         }
         iframe {
             width: 100%;
@@ -63,11 +90,21 @@
 <body>
 
 <div class="container">
-    <a href="index.html" class="back-link">← Back to Portfolio</a>
-    <h1>Schwarzschild Radius and Black Holes</h1>
+    <div class="navigation-row">
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+        <!-- Кнопка, которая спасёт мобильных пользователей! -->
+        <a href="schwarzwald_radius.pdf" target="_blank" class="download-btn">📖 Open Full PDF</a>
+    </div>
+
+    <h1>Investigation of the Schwarzschild Metric & Event Horizons</h1>
+    
+    <div class="formula-box">
+        The Schwarzschild Radius: <span>$$R_s = \frac{2GM}{c^2}$$</span>
+    </div>
     
     <div class="pdf-container">
-        <iframe src="schwarzschild_radius.pdf"></iframe>
+        <!-- Твой PDF-файл -->
+        <iframe src="schwarzwald_radius.pdf"></iframe>
     </div>
 </div>
 
