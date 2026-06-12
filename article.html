@@ -1,9 +1,11 @@
+Markdown:Исправленный файл статьи:article.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schwarzschild Radius Research | Ilyas</title>
+    <!-- Подключение MathJax для красивого отображения физических формул -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
@@ -12,6 +14,7 @@
             --text-color: #e2e8f0;
             --accent-color: #38bdf8;
             --card-bg: #1e293b;
+            --border-color: #334155;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -29,58 +32,116 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
         }
         .back-link {
             color: var(--accent-color);
             text-decoration: none;
             font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s ease;
         }
-        .back-link:hover { text-decoration: underline; }
+        .back-link:hover {
+            text-decoration: underline;
+            transform: translateX(-3px);
+        }
         
         .download-btn {
-            background-color: transparent;
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            padding: 8px 16px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-        }
-        .download-btn:hover {
             background-color: var(--accent-color);
             color: var(--bg-color);
+            border: 1px solid var(--accent-color);
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+        }
+        .download-btn:hover {
+            background-color: transparent;
+            color: var(--accent-color);
+            box-shadow: none;
         }
 
-        h1 { color: #fff; margin-bottom: 10px; font-size: 1.8rem; }
-        
-        .formula-box {
-            background-color: var(--card-bg);
-            border: 1px solid #334155;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 25px;
+        h1 { 
+            color: #fff; 
+            margin-top: 10px;
+            margin-bottom: 15px; 
+            font-size: 2rem; 
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* Красивая карточка с формулой Шварцшильда */
+        .formula-card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
             text-align: center;
-            font-size: 1.2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        .formula-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #94a3b8;
+            margin-bottom: 12px;
+        }
+        .formula-display {
+            font-size: 1.6rem;
+            margin: 15px 0;
+            color: #fff;
         }
 
-     
+        /* Контейнер для PDF */
         .pdf-container {
             position: relative;
             width: 100%;
-            height: 80vh;
-            border-radius: 8px;
+            height: 75vh;
+            border-radius: 10px;
             overflow: hidden;
-            border: 1px solid #334155;
-            -webkit-overflow-scrolling: touch; 
+            border: 1px solid var(--border-color);
+            background-color: #111827;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Исправленная закрытая скобка CSS */
         iframe {
             width: 100%;
             height: 100%;
             border: none;
+        }
+
+        /* Блок-уведомление для мобильных устройств (Android), где iframe не поддерживается */
+        .mobile-pdf-fallback {
+            display: none;
+            background-color: #1e293b;
+            border: 1px dashed var(--accent-color);
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .mobile-pdf-fallback p {
+            margin-bottom: 20px;
+            color: #94a3b8;
+        }
+
+        /* Скрытие iframe на совсем маленьких экранах (мобильные) и показ удобной ссылки */
+        @media (max-width: 768px) {
+            .pdf-container {
+                display: none;
+            }
+            .mobile-pdf-fallback {
+                display: block;
+            }
         }
     </style>
 </head>
@@ -89,20 +150,38 @@
 <div class="container">
     <div class="navigation-row">
         <a href="index.html" class="back-link">← Back to Portfolio</a>
-       
-        <a href="schwarzschild_radius.pdf" target="_blank" class="download-btn">📖 Open Full PDF</a>
+        <!-- Добавлен явный атрибут download для удобства скачивания на мобильных -->
+        <a href="schwarzschild_radius.pdf" target="_blank" download="schwarzschild_radius.pdf" class="download-btn">📖 Open/Download PDF</a>
     </div>
 
-    <h1>The Schwarzschild Radius and black holes</h1>
+    <h1>The Schwarzschild Radius and Black Holes</h1>
     
+    <!-- Интерактивная карточка с красивой формулой (MathJax) -->
+    <div class="formula-card">
+        <div class="formula-title">The Schwarzschild Radius Equation</div>
+        <div class="formula-display">
+            $$R_s = \frac{2GM}{c^2}$$
+        </div>
+        <p style="margin: 10px 0 0 0; font-size: 0.95rem; color: #94a3b8;">
+            Where \(G\) is the gravitational constant, \(M\) is the mass of the object, and \(c\) is the speed of light.
+        </p>
+    </div>
    
+    <!-- Основной просмотрщик для ПК и iOS устройств -->
     <div class="pdf-container">
-        
         <iframe src="schwarzschild_radius.pdf"></iframe>
+    </div>
+
+    <!-- Красивое и удобное решение для Android и мобильных устройств -->
+    <div class="mobile-pdf-fallback">
+        <div style="font-size: 3rem; margin-bottom: 15px;">📄</div>
+        <h3>Read Scientific Paper</h3>
+        <p>Mobile browsers require PDF files to be opened directly or saved to your device to read them.</p>
+        <a href="schwarzschild_radius.pdf" target="_blank" download="schwarzschild_radius.pdf" class="download-btn" style="display: inline-block;">
+            Open PDF in New Tab
+        </a>
     </div>
 </div>
 
 </body>
-</html>
-
 </html>
