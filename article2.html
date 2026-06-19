@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schwarzschild & Kerr metric | Ilyas</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --text-color: #e2e8f0;
+            --accent-color: #38bdf8;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+        }
+        .navigation-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .back-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s ease;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+            transform: translateX(-3px);
+        }
+        
+        .download-btn {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border: 1px solid var(--accent-color);
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+        }
+        .download-btn:hover {
+            background-color: transparent;
+            color: var(--accent-color);
+            box-shadow: none;
+        }
+
+        h1 { 
+            color: #fff; 
+            margin-top: 10px;
+            margin-bottom: 15px; 
+            font-size: 2rem; 
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+
+        .formula-card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        .formula-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #94a3b8;
+            margin-bottom: 12px;
+        }
+        .formula-display {
+            font-size: 1.6rem;
+            margin: 15px 0;
+            color: #fff;
+        }
+
+
+        .pdf-container {
+            position: relative;
+            width: 100%;
+            height: 75vh;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background-color: #111827;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+        }
+        
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .mobile-pdf-fallback {
+            display: none;
+            background-color: #1e293b;
+            border: 1px dashed var(--accent-color);
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .mobile-pdf-fallback p {
+            margin-bottom: 20px;
+            color: #94a3b8;
+        }
+
+    
+        @media (max-width: 768px) {
+            .pdf-container {
+                display: none;
+            }
+            .mobile-pdf-fallback {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="navigation-row">
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+    <h1>The Schwarzschild & Kerr Metric</h1>
+   
+    <div class="pdf-container">
+        <iframe src="Schwarzschild & Kerr Metric.pdf"></iframe>
+    </div>
+
+    <div class="mobile-pdf-fallback">
+        <div style="font-size: 3rem; margin-bottom: 15px;">📄</div>
+        <h3>Read Scientific Paper</h3>
+        <p>Mobile browsers require PDF files to be opened directly or saved to your device to read them.</p>
+        <a href="Schwarzschild & Kerr Metric.pdf" target="_blank" download="Schwarzschild & Kerr Metric.pdf" class="download-btn" style="display: inline-block;">
+            Open PDF in New Tab
+        </a>
+    </div>
+</div>
